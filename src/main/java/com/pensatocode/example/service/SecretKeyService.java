@@ -1,14 +1,14 @@
 package com.pensatocode.example.service;
 
-import com.pensatocode.example.model.Code;
-import com.pensatocode.example.repository.CodeRepository;
+import com.pensatocode.example.model.SecretKey;
+import com.pensatocode.example.repository.SecretKeyRepository;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 
 @Service
-public class CodeService {
-    private final CodeRepository repository;
+public class SecretKeyService {
+    private final SecretKeyRepository repository;
     private static final String CHAR_LOWER = "abcdefghijklmnopqrstuvwxyz";
     private static final String CHAR_UPPER = CHAR_LOWER.toUpperCase();
     private static final String NUMBER = "0123456789";
@@ -16,14 +16,14 @@ public class CodeService {
     private static final String ALL_CHARS = CHAR_LOWER + CHAR_UPPER + NUMBER + SPECIAL_CHARS;
     private static final SecureRandom random = new SecureRandom();
 
-    public CodeService(CodeRepository repository) {
+    public SecretKeyService(SecretKeyRepository repository) {
         this.repository = repository;
     }
 
-    public Code generateAndSaveCode() {
+    public SecretKey generateAndSaveSecretKey() {
         String code = generateSecretKey();
-        Code randomCode = new Code(code);
-        return repository.save(randomCode);
+        SecretKey randomSecretKey = new SecretKey(code);
+        return repository.save(randomSecretKey);
     }
 
     private String generateSecretKey() {

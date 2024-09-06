@@ -1,6 +1,6 @@
 package com.pensatocode.example.controller;
 
-import com.pensatocode.example.TestcontainersConfiguration;
+import com.pensatocode.example.TestcontainersConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -17,15 +17,15 @@ import static org.hamcrest.Matchers.matchesPattern;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Testcontainers
-@Import(TestcontainersConfiguration.class)
-class RandomCodeControllerTest {
+@Import(TestcontainersConfig.class)
+class SecretKeyControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     void generateRandomCode_ShouldReturnCode() throws Exception {
-        mockMvc.perform(get("/code/generate"))
+        mockMvc.perform(get("/secret-key/generate"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(matchesPattern("^[a-zA-Z0-9!@#$%^&*()_\\-+=<>?]{20}$")));
     }

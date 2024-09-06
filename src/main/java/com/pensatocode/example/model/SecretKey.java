@@ -12,13 +12,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Code {
+public class SecretKey {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String value;
 
-    public Code(String code) {
+    public SecretKey(String code) {
         this.value = code;
     }
 }
