@@ -27,6 +27,6 @@ class RandomCodeControllerTest {
     void generateRandomCode_ShouldReturnCode() throws Exception {
         mockMvc.perform(get("/code/generate"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(matchesPattern("\\d{6}")));
+                .andExpect(content().string(matchesPattern("^[a-zA-Z0-9!@#$%^&*()_\\-+=<>?]{20}$")));
     }
 }
