@@ -5,6 +5,7 @@ import com.pensatocode.example.repository.SecretKeyRepository;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.Optional;
 
 @Service
 public class SecretKeyService {
@@ -18,6 +19,10 @@ public class SecretKeyService {
 
     public SecretKeyService(SecretKeyRepository repository) {
         this.repository = repository;
+    }
+
+    public Optional<SecretKey> getSecretKeyById(Long id) {
+        return repository.findById(id);
     }
 
     public SecretKey generateAndSaveSecretKey() {
